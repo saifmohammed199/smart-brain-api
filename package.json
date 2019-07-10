@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/saifmohammed199/smart-brain-api/issues"
   },
-  "homepage": "https://github.com/saifmohammed199/smart-brain-api#readme"
+  "homepage": "https://github.com/saifmohammed199/smart-brain-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saifmohammed199/smart-brain-api.git"
+    "url": "https://github.com/saifmohammed199/smart-brain-api.git"
   },
   "author": "Saif Mohammed",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {

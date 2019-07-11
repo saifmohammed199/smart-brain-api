@@ -1,15 +1,18 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-var bcrypt = require('bcryptjs')
+const bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
 const database ={
     users:[
         {
             id:'123',
             name:'saif',
             email:'saif@mail.com',
+            password:'one',
             entries:'0',
             joined : new Date()
         },
@@ -17,6 +20,7 @@ const database ={
             id:'124',
             name:'shahazaad',
             email:'shahazaad@mail.com',
+            password:'two',
             entries:'0',
             joined : new Date()
         }
@@ -29,6 +33,7 @@ const database ={
         }
     ]
 }
+
 
 app.get('/',(req,res)=>{
     res.send(database.users);
@@ -46,18 +51,17 @@ bcrypt.compare("not_bacon", '$2a$10$PtbJhbNxAic4YQszciD55esOl.qf/snlxf/tN05RjH1q
 });
     if (req.body.email===database.users[0].email &&
         req.body.password===database.users[0].password){
-            res.json('sucess')
+            res.json(database.users[0]);
         }else{
             res.status(400).json('error logging in')
         }})
 app.post('/register',(req,res)=>{
-    const {email,password,name}=req.body;
+    const {email,name}=req.body;
     
     database.users.push({
             id:'125',
             name:name,
             email:email,
-            password:password,
             entries:'0',
             joined : new Date()
     })
@@ -76,7 +80,7 @@ app.get('/profile/:id',(req,res)=>{
         res.status(404).json('no such user')
     }
 })
-app.get('/image',(req,res)=>{
+app.put('/image',(req,res)=>{
     const {id} = req.body;
     let found = false;
     database.users.forEach(user =>{
